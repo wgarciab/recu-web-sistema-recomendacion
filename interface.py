@@ -19,11 +19,13 @@ if any(calificaciones):
     st.write("## Recomendaciones")
     st.write('De acuerdo con sus calificaciones, los juegos más recomendados son:')
     recomendaciones = sr.recomendar_videojuegos(calificaciones)
-
-    st.write('#### 1. ' + recomendaciones.index[0])
-    st.write('#### 2. ' + recomendaciones.index[1])
-    st.write('#### 3. ' + recomendaciones.index[2])
-    
-    st.write("## Matriz de recomendaciones")
-    st.write('Entre más baja la similitud, mas recomendado es:')
-    st.write(recomendaciones)
+    if len(recomendaciones) > 0:
+        for i in range(min(len(recomendaciones),3)):
+            st.write(f'#### {i+1}. ' + recomendaciones.index[i])
+    if len(recomendaciones) != 0:
+        st.write("## Matriz de recomendaciones")
+        st.write('Entre más baja la similitud, mas recomendado es:')
+        st.write(recomendaciones)
+    else:
+        st.write('## No hay recomendaciones para usted.')
+        

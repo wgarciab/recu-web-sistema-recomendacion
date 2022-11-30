@@ -157,6 +157,8 @@ def recomendar_videojuegos(usuario_recomendar):
   """Presentamos la matriz de recomedaciones en un data frame para mejor ordenada por valor más similar(con menor distancia) y recomendamos los primeros 5 """
 
   recomendaciones_df = pd.DataFrame(data=matris_de_recomendaciones,index=calificaciones_cinco_mas_cercanos.columns)
-  recomendaciones_df = recomendaciones_df.sort_values(by='Similitud').head(5)
+  if not recomendaciones_df.empty:
+    recomendaciones_df = recomendaciones_df.sort_values(by='Similitud').head(5).replace({np.nan:0})
+  
 
   return(recomendaciones_df)
