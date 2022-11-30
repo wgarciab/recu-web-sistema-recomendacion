@@ -149,14 +149,14 @@ def recomendar_videojuegos(usuario_recomendar):
 
   """Obtenemos la matriz de recomendación"""
 
-  matris_de_recomendaciones = []
+  matriz_de_recomendaciones = []
   for i in range(len(pesos)) :
-    matris_de_recomendaciones.append(suma_juegos_a_recomendar[i]/pesos[i])
-  matris_de_recomendaciones
+    matriz_de_recomendaciones.append(suma_juegos_a_recomendar[i]/pesos[i])
+  matriz_de_recomendaciones
 
   """Presentamos la matriz de recomedaciones en un data frame para mejor ordenada por valor más similar(con menor distancia) y recomendamos los primeros 5 """
 
-  recomendaciones_df = pd.DataFrame(data=matris_de_recomendaciones,index=calificaciones_cinco_mas_cercanos.columns)
+  recomendaciones_df = pd.DataFrame(data=matriz_de_recomendaciones,index=calificaciones_cinco_mas_cercanos.columns)
   if not recomendaciones_df.empty:
     recomendaciones_df = recomendaciones_df.sort_values(by='Similitud').head(5).replace({np.nan:0})
   
