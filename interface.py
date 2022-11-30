@@ -1,5 +1,5 @@
 import streamlit as st
-import sistema_de_recomendación as sr
+import sistema_de_recomendacion as sr
 
 st.write("# Sistema de recomendación de video juegos")
 st.write("Selecciones una calificación entre 1 y 10 para cada uno de los video juegos que se proponen.")
